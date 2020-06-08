@@ -1,0 +1,58 @@
+{
+  "name": "advanced-cli",
+  "version": "1.0.0",
+  "description": "advanced-cli",
+  "main": "./lib/index.js",
+  "bin": {
+    "advanced-cli": "./bin/index.js"
+  },
+  "scripts": {
+    "start": "npm run build && npm run global",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "mocha src/**/*.spec.ts",
+    "lint": "tslint -p . --fix",
+    "build": "npm run clean:some && tsc -p .",
+    "global": "sudo npm i -g && advanced-cli",
+    "clean:some": "rm -rf ./lib ./docs",
+    "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib ./docs",
+    "refresh": "npm run clean:all && npm install",
+    "tscov": "tscov --min-coverage 90",
+    "tscov:d": "tscov --details",
+    "publish-package": "npm run build && npm publish",
+    "docs": "typedoc --out docs ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaughan189/advanced-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vaughan189/advanced-cli/issues"
+  },
+  "homepage": "https://github.com/vaughan189/advanced-cli#readme",
+  "dependencies": {
+    "@types/fs-extra": "^9.0.1",
+    "chalk": "^4.0.0",
+    "clear": "^0.1.0",
+    "commander": "^5.1.0",
+    "figlet": "^1.4.0",
+    "fs-extra": "^9.0.1",
+    "inquirer": "^7.1.0",
+    "inversify": "^5.0.1",
+    "kleur": "^3.0.3",
+    "path": "^0.12.7",
+    "reflect-metadata": "^0.1.13",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@liftr/tscov": "^1.4.7",
+    "@types/figlet": "^1.2.0",
+    "@types/inquirer": "^6.5.0",
+    "@types/node": "^14.0.11",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typedoc": "^0.17.7",
+    "typescript": "^3.9.5"
+  }
+}
